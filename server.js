@@ -12,9 +12,9 @@ io.on('connection', function (socket) {
 
   socket.on('message',function(message) {
     console.log('message received: ' + message.text);
-
+    //socket.broadcast sends to everyone except sender
     //io.emit sends to everyone including sender
-    socket.broadcast.emit('message', message);
+    io.emit('message', message);
   })
 
   socket.emit('message', {
