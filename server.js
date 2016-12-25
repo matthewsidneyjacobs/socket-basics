@@ -11,8 +11,6 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', function (socket) {
 	console.log('User connected via socket.io!');
 
-  // var timestamp = moment.utc(now.valueOf()).local().format('h:mm a');
-
   socket.on('message',function(message) {
     console.log('message received: ' + message.text);
     //socket.broadcast sends to everyone except sender
@@ -24,6 +22,7 @@ io.on('connection', function (socket) {
 
 //timestamp property -javascript timestamp milliseconds
   socket.emit('message', {
+    name: 'System',
     text:'welcome to the chat application!',
     timestamp: moment().valueOf()
   });
